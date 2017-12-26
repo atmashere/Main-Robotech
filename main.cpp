@@ -66,7 +66,7 @@ void showResult(TModel* model){
         {
             for (int j=0; j<Result.colCount(); j++)
             {
-                printf("%5.7f ; ", Result(i,j));
+                printf("%10.7f ; ", Result(i,j));
             }
             printf("\n");
         }
