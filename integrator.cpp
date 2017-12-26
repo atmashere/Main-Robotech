@@ -1,6 +1,4 @@
 
-
-
 #include <stdio.h>
 #include <math.h>
 #include "integrator.h"
@@ -50,7 +48,12 @@ TDormandPrinceIntegrator::TDormandPrinceIntegrator()
     : TIntegrator() 
 {
 	// Определение машинного нуля
-	u = 0.00127;
+    //u = 0.00127;
+    double v = 1.;
+    while (1.+v > 1.) {
+        u = v;
+        v = v/2.;
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -106,9 +109,6 @@ printf ("\n1.1");
     {
         // Устанавливаем шаг на итерацию
         h = h_new;
-
-		
-
 		  // Вычисляем коэффициенты К
         for ( int j = 0; j < 7; j++ )
         {
@@ -122,10 +122,6 @@ printf ("\n1.1");
             }
            Model->getRight( Y, t + c[j] * h, K[j] );
         }
-		
-
-
-
  // Вычисляем новые значения результатов и локальной ошибки (4 и 5 порядок)
         e = 0;
         for ( int k = X.high(); k >= 0; k-- )
@@ -143,9 +139,6 @@ printf ("\n1.1");
         // Коррекция шага
         h_new = h / max( 0.1, min( 5., powl(e / Eps, 0.2)/0.9 ) );
 
-
-
-
 	   // Если локальная ошибка превышает установленную величину, пытаемся сделать шаг заново
         if ( e > Eps )
             continue;
@@ -156,7 +149,6 @@ printf ("\n1.1");
             long double l_ldTheta = (t_out - t)/h,
                         b[6];
 
-
 			 // Рассчитываем коэффициенты плотной выдачи
             b[0] = l_ldTheta * ( 1 + l_ldTheta*(-1337./480. + l_ldTheta*(1039./360. + l_ldTheta*(-1163./1152.))));
             b[1] = 0;
@@ -164,10 +156,7 @@ printf ("\n1.1");
             b[3] = -5. * powl(l_ldTheta, 2) * (27./40. + l_ldTheta*(-9./5. + l_ldTheta*(83./96.)))/2.;
             b[4] = 18225. * powl(l_ldTheta, 2) * (-3./250. + l_ldTheta*(22./375. + l_ldTheta*(-37./600.)))/848.;
             b[5] = -22. * powl(l_ldTheta, 2) * (-3./10. + l_ldTheta*(29./30. + l_ldTheta*(-17./24.)))/7.;
-			
-			
 
-			
 			// Получаем результат для выдачи
             for ( int k = X.high(); k >= 0; k-- )
             {
@@ -176,17 +165,13 @@ printf ("\n1.1");
                     l_ldSum += b[j] * K[j][k];
                 Xout[k] = X[k] + h * l_ldSum;
             }
-			
 
-			
             // Передача результата в модель
             Model->addResult( Xout, t_out );
             // Наращиваем время выдачи
             t_out += Model->getSamplingIncrement();
         }
-        
 
-		
         // Обновляем X и наращиваем время на величину сделанного шага
         X = X1;
         t += h;
@@ -196,7 +181,7 @@ printf ("\n1.1");
     }
 	
 	printf ("\n1.4");
-	printf ("\n%i",N);
+    printf ("\n%i", N);
 
 	// Возвращаем величину глобальной погрешности
     return Eps / pow( N, 1.5 );

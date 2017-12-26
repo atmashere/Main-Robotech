@@ -49,7 +49,7 @@ TIntegrator* Integrator = new TDormandPrinceIntegrator();
 	
 	
 	
-	printf ("\nTVector Res\n");
+    printf ("\nTVector Res\n");
 	for (int z=0; z<4; z++)
 	{
 		printf("%f   ", Res[z]);
@@ -62,12 +62,12 @@ TIntegrator* Integrator = new TDormandPrinceIntegrator();
 	printf("\nCount column Matrix_x = %i", Result.colCount());
 	
 
-	printf("\nResult");
+    printf("\nResult: \n");
 	for (int i=0; i<Result.rowCount(); i++)
 	{
 		for (int j=0; j<Result.colCount(); j++)
 		{
-			printf("%5.2f   ", Result(i,j));
+            printf("%5.3f;", Result(i,j));
 		}
 		printf("\n");
 	}
@@ -75,6 +75,7 @@ TIntegrator* Integrator = new TDormandPrinceIntegrator();
 
 	delete Integrator;
 	delete Model;
+
 
 
     //TArenstorfModel* modN1;
