@@ -3,8 +3,8 @@
 #include <math.h>
 #include "integrator.h"
 #include "model.h"
-//#include "array.h"
 
+// Определение машинного нуля
 template <class T>
 struct STypeZero
 {
@@ -48,7 +48,6 @@ TDormandPrinceIntegrator::TDormandPrinceIntegrator()
     : TIntegrator() 
 {
 	// Определение машинного нуля
-    //u = 0.00127;
     double v = 1.;
     while (1.+v > 1.) {
         u = v;
@@ -61,7 +60,7 @@ TDormandPrinceIntegrator::TDormandPrinceIntegrator()
 long double TDormandPrinceIntegrator::Run(TModel* Model)
 {
 
-printf ("\n1.1");
+//printf ("\n1.1");
     
     long double // Это время для интегрирования (увеличивается на величину шага интегрирования)
 				t = Model->getT0(),
@@ -93,15 +92,15 @@ printf ("\n1.1");
     // Инициализируем размерности коэффициентов K[j]
     for ( int j = 7; j > 0; --j, K[j].resize( X.size() ) );
 		
-	printf ("\n1.2");
+    //printf ("\n1.2");
 	// Счётчик количества сделанных шагов
 	int N = 0;
 	
-	printf ("\n&&&&&&K\n");
-	for (int z=0; z<7; z++)
-	{
-		//printf("%d   ", K[z]);
-	}
+    //printf ("\n&&&&&&K\n");
+    //for (int z=0; z<7; z++)
+    //{
+    //	printf("%d   ", K[z]);
+    //}
 		
 	
     // Главный цикл
@@ -180,8 +179,8 @@ printf ("\n1.1");
         N++;
     }
 	
-	printf ("\n1.4");
-    printf ("\n%i", N);
+    //printf ("\n1.4");
+   // printf ("\n%i", N);
 
 	// Возвращаем величину глобальной погрешности
     return Eps / pow( N, 1.5 );

@@ -19,18 +19,6 @@ TArenstorfModel::TArenstorfModel() : TModel()
 }
 
 //---------------------------------------------------------------------------
-/*
-TVector TArenstorfModel::getRight( const TVector& X, long double t )
-{
-    TVector Y(4);
-	D1 = pow( pow( X[0] + m, 2 ) + pow( X[1], 2 ), 1.5 );
-    D2 = pow( pow( X[0] + m - 1, 2 ) + pow( X[1], 2 ), 1.5 );
-    Y[0] = X[2];
-    Y[1] = X[3];
-    Y[2] = X[0] + 2 * X[3] - (1 - m)*(X[0] + m) / D1 - m * (X[0] + m - 1) / D2;
-    Y[3] = X[1] - 2 * X[2] - (1 - m)*X[1] / D1 - m * X[1] / D2;
-}
-*/
 
 void TArenstorfModel::getRight( const TVector& X, long double t, TVector& Y )
 {

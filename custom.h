@@ -17,7 +17,6 @@ class TArenstorfModel  : public TModel
 		void getRight( const TVector& X, long double t, TVector& Y );
 };
 
-//const long double TArenstorfModel::m  = 0.012277471;
 
 //---------------------------------------------------------------------------
 // Задача Аренсторфа (начальные условия 2)
