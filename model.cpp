@@ -12,7 +12,7 @@ void TModel::addResult( const TVector& X, long double t )
 	// Поместим результаты в последнюю строку матрицы Result
 	// Момент времени помещается в 0-ой столбец, вектор состояния - в остальные столбцы
 	Result(N, 0) = t;
-	for (int i = X.size(); i--; i > 0)
+    for (int i = X.size(); i > 0 ; i--)
 		Result(N, i) = X[i-1];
 	// Увеличим N
 	N++;

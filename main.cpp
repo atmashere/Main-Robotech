@@ -72,35 +72,15 @@ TIntegrator* Integrator = new TDormandPrinceIntegrator();
 		printf("\n");
 	}
 	
-	
-	
-	
-	
+
 	delete Integrator;
 	delete Model;
 
 
+    //TArenstorfModel* modN1;
 
-
-
-
-	
-
-
-
-	
-
-
-
-
-
-
-
-	
-	//TArenstorfModel* modN1;
-	
-	//TArenstorfModel* Model1;
-	//Result = Model2->getResult();
+    //TArenstorfModel* Model1;
+    //Result = Model2->getResult();
 	
 	//Model1.t0 = 0;
 	//Model1 = new TArensorfModel(0, 20, 0.1);
@@ -126,6 +106,6 @@ TIntegrator* Integrator = new TDormandPrinceIntegrator();
 	//delete Integrator;
 	//delete Model1;
 	//delete Model2;
-	printf("end");
+    //printf("end");
 	return 0;
 }
