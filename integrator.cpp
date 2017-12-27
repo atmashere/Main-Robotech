@@ -22,7 +22,6 @@ STypeZero< long double > g_ldZero;
 
 
 #define max(a, b) ( ( (a) > (b) ) ? (a) : (b) )
-
 #define min(a, b) ( ( (a) < (b) ) ? (a) : (b) )
 
 
@@ -97,11 +96,6 @@ long double TDormandPrinceIntegrator::Run(TModel* Model)
 	int N = 0;
 	
     //printf ("\n&&&&&&K\n");
-    //for (int z=0; z<7; z++)
-    //{
-    //	printf("%d   ", K[z]);
-    //}
-		
 	
     // Главный цикл
 	while ( t < t1 )
